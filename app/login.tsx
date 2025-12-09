@@ -31,9 +31,6 @@ export default function LoginScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <Text style={styles.time}>01:14</Text>
-      </View>
 
       <View style={styles.logoContainer}>
         <View style={styles.logoBox}>
