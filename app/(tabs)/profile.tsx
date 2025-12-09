@@ -62,7 +62,9 @@ export default function ProfileScreen() {
           <ChevronRight size={20} color="#9ca3af" />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => router.push('/security')}>
           <View style={styles.menuLeft}>
             <Shield size={20} color="#000" />
             <Text style={styles.menuText}>Security</Text>
