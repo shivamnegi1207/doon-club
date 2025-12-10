@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shivamnegi.doonclub",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "web": {
       "bundler": "metro",
@@ -29,6 +33,9 @@
       "eas": {
         "projectId": "391f0793-2f11-4a8a-b928-f7d9006c5b6e"
       }
+    },
+    "android": {
+      "package": "com.shivamnegi.doonclub"
     }
   }
 }
