@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import { Bell } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
@@ -14,6 +15,7 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container}>
+      {/* ---------- Header ---------- */}
       <View style={styles.header}>
         <View style={styles.userInfo}>
           <Image
@@ -24,27 +26,27 @@ export default function HomeScreen() {
           />
           <Text style={styles.userName}>Nitin Dwivedi</Text>
         </View>
+
         <TouchableOpacity>
           <Bell size={24} color="#000" />
         </TouchableOpacity>
       </View>
 
+      {/* ---------- Banner Image ---------- */}
       <View style={styles.banner}>
-        <Image
-          source={{
-            uri: 'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=600',
-          }}
-          style={styles.bannerImage}
+        <ImageBackground
+          source={require('../../assets/images/wel-to-dc.png')}
+          style={styles.bannerImageBg}
+          imageStyle={styles.imageStyle}
         />
-        <View style={styles.bannerOverlay}>
-          <Text style={styles.bannerText}>Welcome to Doon Club</Text>
-        </View>
       </View>
 
+      {/* ---------- Grid Menu ---------- */}
       <View style={styles.grid}>
         <TouchableOpacity
           style={styles.card}
-          onPress={() => router.push('/(tabs)/bill')}>
+          onPress={() => router.push('/(tabs)/bill')}
+        >
           <View style={[styles.iconContainer, { backgroundColor: '#ef4444' }]}>
             <Text style={styles.iconText}>💳</Text>
           </View>
@@ -81,6 +83,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+
+  /* ---------- Header ---------- */
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -102,31 +106,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+
+  /* ---------- Banner ---------- */
   banner: {
     margin: 16,
+    height: 160,
     borderRadius: 12,
     overflow: 'hidden',
-    height: 160,
   },
-  bannerImage: {
+  bannerImageBg: {
     width: '100%',
     height: '100%',
   },
-  bannerOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    justifyContent: 'center',
-    alignItems: 'center',
+  imageStyle: {
+    resizeMode: 'cover',
   },
-  bannerText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: '600',
-  },
+
+  /* ---------- Grid ---------- */
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',

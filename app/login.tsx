@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react-native';
@@ -32,15 +33,16 @@ export default function LoginScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
+      {/* ---------- LOGO IMAGE ---------- */}
       <View style={styles.logoContainer}>
-        <View style={styles.logoBox}>
-          <Text style={styles.logoShield}>⚜️</Text>
-        </View>
-        <Text style={styles.logoText}>DEHRA DUN CLUB</Text>
-        <Text style={styles.logoSubtext}>Established in 1943 Incorporated in 1901</Text>
-        <Text style={styles.logoTagline}>Celebrating life</Text>
+        <Image
+          source={require('../assets/images/dc-banner.png')}
+          style={styles.logoImage}
+          resizeMode="contain"
+        />
       </View>
 
+      {/* ---------- FORM ---------- */}
       <View style={styles.formContainer}>
         <Text style={styles.welcomeTitle}>Welcome Back</Text>
         <Text style={styles.welcomeSubtitle}>
@@ -49,6 +51,7 @@ export default function LoginScreen() {
 
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
+        {/* Email Input */}
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Your Email</Text>
           <TextInput
@@ -61,6 +64,7 @@ export default function LoginScreen() {
           />
         </View>
 
+        {/* Password Input */}
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Your Password</Text>
           <View style={styles.passwordContainer}>
@@ -74,7 +78,8 @@ export default function LoginScreen() {
             />
             <TouchableOpacity
               style={styles.eyeIcon}
-              onPress={() => setShowPassword(!showPassword)}>
+              onPress={() => setShowPassword(!showPassword)}
+            >
               {showPassword ? (
                 <EyeOff size={20} color="#9ca3af" />
               ) : (
@@ -84,27 +89,33 @@ export default function LoginScreen() {
           </View>
         </View>
 
+        {/* Remember + Forgot */}
         <View style={styles.optionsRow}>
           <TouchableOpacity
             style={styles.rememberRow}
-            onPress={() => setRememberMe(!rememberMe)}>
+            onPress={() => setRememberMe(!rememberMe)}
+          >
             <View
-              style={[styles.checkbox, rememberMe && styles.checkboxChecked]}>
+              style={[styles.checkbox, rememberMe && styles.checkboxChecked]}
+            >
               {rememberMe && <Text style={styles.checkmark}>✓</Text>}
             </View>
             <Text style={styles.rememberText}>Remember me</Text>
           </TouchableOpacity>
+
           <TouchableOpacity>
             <Text style={styles.forgotText}>Forgot password?</Text>
           </TouchableOpacity>
         </View>
 
+        {/* Login Button */}
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
           <Text style={styles.loginButtonText}>Log In</Text>
         </TouchableOpacity>
 
         <Text style={styles.footerText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua
         </Text>
       </View>
     </ScrollView>
@@ -116,46 +127,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  header: {
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 20,
-  },
-  time: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#000',
-  },
+
+  /* ---------- LOGO SECTION ---------- */
   logoContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 16,
+    paddingTop: 50,
   },
-  logoBox: {
-    marginBottom: 12,
+  logoImage: {
+    width: '60%',
+    height: 100,
   },
-  logoShield: {
-    fontSize: 48,
-  },
-  logoText: {
-    fontSize: 16,
-    fontWeight: '700',
-    letterSpacing: 0.5,
-    textAlign: 'center',
-  },
-  logoSubtext: {
-    fontSize: 9,
-    color: '#6b7280',
-    marginTop: 2,
-    textAlign: 'center',
-  },
-  logoTagline: {
-    fontSize: 11,
-    fontWeight: '500',
-    color: '#000',
-    marginTop: 1,
-    textAlign: 'center',
-  },
+
+  /* ---------- FORM ---------- */
   formContainer: {
     marginHorizontal: 16,
     marginVertical: 20,
@@ -163,7 +146,7 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     backgroundColor: '#fff',
     borderWidth: 2,
-    borderColor: '#3b82f6',
+    borderColor: '#d2d3d6ff',
     borderRadius: 16,
   },
   welcomeTitle: {
@@ -183,6 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     textAlign: 'center',
   },
+
   inputGroup: {
     marginBottom: 16,
   },
@@ -201,6 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#000',
   },
+
   passwordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -219,6 +204,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 10,
   },
+
   optionsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -257,6 +243,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#f59e0b',
   },
+
   loginButton: {
     backgroundColor: '#0f4c8b',
     borderRadius: 8,
@@ -269,6 +256,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+
   footerText: {
     fontSize: 11,
     color: '#9ca3af',
