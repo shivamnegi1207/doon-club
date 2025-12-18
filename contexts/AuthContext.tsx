@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const response = await fetch(
         `https://doonclub.in/api/login?membership_no=${membershipNo}&password=${password}`,
         {
-          method: 'GET',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
