@@ -13,20 +13,31 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
+  const [membershipId, setMembershipId] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const router = useRouter();
 
-  const handleLogin = () => {
-    const success = login(email, password);
-    if (success) {
+  const handleLogin = async () => {
+    if (!membershipId || !password) {
+      setError('Please enter membership ID and password');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+
+    const result = await login(membershipId, password);
+    setLoading(false);
+
+    if (result.success) {
       router.replace('/(tabs)');
     } else {
-      setError('Invalid credentials. Please use 123 for both email and password.');
+      setError(result.error || 'Login failed. Please try again.');
     }
   };
 
@@ -51,16 +62,16 @@ export default function LoginScreen() {
 
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-        {/* Email Input */}
+        {/* Membership ID Input */}
         <View style={styles.inputGroup}>
-          <Text style={styles.label}>Your Email</Text>
+          <Text style={styles.label}>Membership ID</Text>
           <TextInput
             style={styles.input}
-            placeholder="mail@example.com"
+            placeholder="MEM12345"
             placeholderTextColor="#d1d5db"
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
+            value={membershipId}
+            onChangeText={setMembershipId}
+            autoCapitalize="characters"
           />
         </View>
 
@@ -103,14 +114,19 @@ export default function LoginScreen() {
             <Text style={styles.rememberText}>Remember me</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push('/forgot-password')}>
             <Text style={styles.forgotText}>Forgot password?</Text>
           </TouchableOpacity>
         </View>
 
         {/* Login Button */}
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Log In</Text>
+        <TouchableOpacity
+          style={[styles.loginButton, loading && styles.loginButtonDisabled]}
+          onPress={handleLogin}
+          disabled={loading}>
+          <Text style={styles.loginButtonText}>
+            {loading ? 'Logging in...' : 'Log In'}
+          </Text>
         </TouchableOpacity>
 
         <Text style={styles.footerText}>
@@ -250,6 +266,10 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     alignItems: 'center',
     marginBottom: 20,
+  },
+  loginButtonDisabled: {
+    backgroundColor: '#9ca3af',
+    opacity: 0.7,
   },
   loginButtonText: {
     color: '#fff',
