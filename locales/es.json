@@ -1,0 +1,83 @@
+{
+  "common": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "rememberMe": "Recuérdame",
+    "forgotPassword": "¿Olvidaste la contraseña?",
+    "language": "Idioma",
+    "back": "Atrás",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "logout": "Cerrar sesión"
+  },
+  "login": {
+    "title": "Bienvenido",
+    "subtitle": "¡Bienvenido! Ingresa tus detalles.",
+    "membershipId": "ID de membresía",
+    "membershipPlaceholder": "MEM12345",
+    "password": "Tu contraseña",
+    "loginButton": "Iniciar sesión",
+    "loggingIn": "Iniciando sesión...",
+    "invalidCredentials": "ID de membresía o contraseña inválidos",
+    "networkError": "Error de red. Por favor intenta de nuevo.",
+    "enterDetails": "Por favor ingresa ID de membresía y contraseña",
+    "loginFailed": "Fallo en el inicio de sesión. Por favor intenta de nuevo."
+  },
+  "forgotPassword": {
+    "title": "Olvidé mi contraseña",
+    "subtitle": "Ingresa tu ID de membresía y fecha de nacimiento para verificar tu identidad",
+    "membershipId": "ID de membresía",
+    "membershipPlaceholder": "MEM12345",
+    "dateOfBirth": "Fecha de nacimiento",
+    "dobPlaceholder": "YYYY-MM-DD",
+    "dobFormat": "Formato: YYYY-MM-DD (p.ej., 1980-05-01)",
+    "verifyButton": "Verificar",
+    "verifying": "Verificando...",
+    "invalidFormat": "Por favor ingresa la fecha de nacimiento en formato YYYY-MM-DD",
+    "enterDetails": "Por favor ingresa ID de membresía y fecha de nacimiento",
+    "verificationFailed": "Verificación fallida. Por favor intenta de nuevo.",
+    "invalidDOB": "ID de membresía o fecha de nacimiento inválidos",
+    "backToLogin": "Volver a iniciar sesión"
+  },
+  "resetPassword": {
+    "title": "Restablecer contraseña",
+    "subtitle": "Ingresa tu nueva contraseña a continuación",
+    "newPassword": "Nueva contraseña",
+    "newPasswordPlaceholder": "Ingresa nueva contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Confirma la nueva contraseña",
+    "resetButton": "Restablecer contraseña",
+    "resetting": "Restableciendo...",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "passwordTooShort": "La contraseña debe tener al menos 4 caracteres",
+    "enterBothFields": "Por favor ingresa ambos campos de contraseña",
+    "invalidUserId": "ID de usuario inválido. Por favor intenta de nuevo.",
+    "resetFailed": "Fallo al restablecer la contraseña. Por favor intenta de nuevo.",
+    "footerText": "La contraseña debe tener al menos 4 caracteres"
+  },
+  "language": {
+    "title": "Idioma",
+    "suggested": "Idiomas sugeridos",
+    "other": "Otros idiomas"
+  },
+  "profile": {
+    "title": "Perfil",
+    "personalInfo": "Información personal",
+    "security": "Seguridad",
+    "notifications": "Notificaciones",
+    "language": "Idioma",
+    "logout": "Cerrar sesión"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "booking": "Reserva",
+    "event": "Evento",
+    "bill": "Factura",
+    "pay": "Pago",
+    "profile": "Perfil"
+  }
+}

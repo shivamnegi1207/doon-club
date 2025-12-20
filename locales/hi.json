@@ -1,0 +1,83 @@
+{
+  "common": {
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "rememberMe": "मुझे याद रखें",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "language": "भाषा",
+    "back": "वापस",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफल",
+    "logout": "लॉगआउट"
+  },
+  "login": {
+    "title": "स्वागत है",
+    "subtitle": "स्वागत है! कृपया अपने विवरण दर्ज करें।",
+    "membershipId": "सदस्यता आईडी",
+    "membershipPlaceholder": "MEM12345",
+    "password": "आपका पासवर्ड",
+    "loginButton": "लॉगिन करें",
+    "loggingIn": "लॉगिन हो रहा है...",
+    "invalidCredentials": "अमान्य सदस्यता आईडी या पासवर्ड",
+    "networkError": "नेटवर्क त्रुटि। कृपया फिर से प्रयास करें।",
+    "enterDetails": "कृपया सदस्यता आईडी और पासवर्ड दर्ज करें",
+    "loginFailed": "लॉगिन विफल। कृपया फिर से प्रयास करें।"
+  },
+  "forgotPassword": {
+    "title": "पासवर्ड भूल गए",
+    "subtitle": "अपनी पहचान सत्यापित करने के लिए अपनी सदस्यता आईडी और जन्म तिथि दर्ज करें",
+    "membershipId": "सदस्यता आईडी",
+    "membershipPlaceholder": "MEM12345",
+    "dateOfBirth": "जन्म तिथि",
+    "dobPlaceholder": "YYYY-MM-DD",
+    "dobFormat": "प्रारूप: YYYY-MM-DD (जैसे, 1980-05-01)",
+    "verifyButton": "सत्यापित करें",
+    "verifying": "सत्यापन हो रहा है...",
+    "invalidFormat": "कृपया जन्म तिथि YYYY-MM-DD प्रारूप में दर्ज करें",
+    "enterDetails": "कृपया सदस्यता आईडी और जन्म तिथि दर्ज करें",
+    "verificationFailed": "सत्यापन विफल। कृपया फिर से प्रयास करें।",
+    "invalidDOB": "अमान्य सदस्यता आईडी या जन्म तिथि",
+    "backToLogin": "लॉगिन पर वापस जाएं"
+  },
+  "resetPassword": {
+    "title": "पासवर्ड रीसेट करें",
+    "subtitle": "नीचे अपना नया पासवर्ड दर्ज करें",
+    "newPassword": "नया पासवर्ड",
+    "newPasswordPlaceholder": "नया पासवर्ड दर्ज करें",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "confirmPasswordPlaceholder": "नए पासवर्ड की पुष्टि करें",
+    "resetButton": "पासवर्ड रीसेट करें",
+    "resetting": "रीसेट हो रहा है...",
+    "passwordMismatch": "पासवर्ड मेल नहीं खाते",
+    "passwordTooShort": "पासवर्ड कम से कम 4 वर्ण का होना चाहिए",
+    "enterBothFields": "कृपया दोनों पासवर्ड फ़ील्ड दर्ज करें",
+    "invalidUserId": "अमान्य उपयोगकर्ता आईडी। कृपया फिर से प्रयास करें।",
+    "resetFailed": "पासवर्ड रीसेट करने में विफल। कृपया फिर से प्रयास करें।",
+    "footerText": "पासवर्ड कम से कम 4 वर्ण का होना चाहिए"
+  },
+  "language": {
+    "title": "भाषा",
+    "suggested": "सुझाई गई भाषाएं",
+    "other": "अन्य भाषाएं"
+  },
+  "profile": {
+    "title": "प्रोफ़ाइल",
+    "personalInfo": "व्यक्तिगत जानकारी",
+    "security": "सुरक्षा",
+    "notifications": "सूचनाएं",
+    "language": "भाषा",
+    "logout": "लॉगआउट"
+  },
+  "tabs": {
+    "home": "होम",
+    "booking": "बुकिंग",
+    "event": "इवेंट",
+    "bill": "बिल",
+    "pay": "भुगतान",
+    "profile": "प्रोफ़ाइल"
+  }
+}

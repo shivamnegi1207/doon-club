@@ -1,0 +1,83 @@
+{
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "language": "Language",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Welcome Back",
+    "subtitle": "Welcome back! Please enter your details.",
+    "membershipId": "Membership ID",
+    "membershipPlaceholder": "MEM12345",
+    "password": "Your Password",
+    "loginButton": "Log In",
+    "loggingIn": "Logging in...",
+    "invalidCredentials": "Invalid membership ID or password",
+    "networkError": "Network error. Please try again.",
+    "enterDetails": "Please enter membership ID and password",
+    "loginFailed": "Login failed. Please try again."
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "subtitle": "Enter your membership ID and date of birth to verify your identity",
+    "membershipId": "Membership ID",
+    "membershipPlaceholder": "MEM12345",
+    "dateOfBirth": "Date of Birth",
+    "dobPlaceholder": "YYYY-MM-DD",
+    "dobFormat": "Format: YYYY-MM-DD (e.g., 1980-05-01)",
+    "verifyButton": "Verify",
+    "verifying": "Verifying...",
+    "invalidFormat": "Please enter date of birth in YYYY-MM-DD format",
+    "enterDetails": "Please enter membership ID and date of birth",
+    "verificationFailed": "Verification failed. Please try again.",
+    "invalidDOB": "Invalid membership ID or date of birth",
+    "backToLogin": "Back to Login"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "subtitle": "Enter your new password below",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm new password",
+    "resetButton": "Reset Password",
+    "resetting": "Resetting...",
+    "passwordMismatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 4 characters",
+    "enterBothFields": "Please enter both password fields",
+    "invalidUserId": "Invalid user ID. Please try again.",
+    "resetFailed": "Failed to reset password. Please try again.",
+    "footerText": "Password must be at least 4 characters long"
+  },
+  "language": {
+    "title": "Language",
+    "suggested": "Suggested Languages",
+    "other": "Other Languages"
+  },
+  "profile": {
+    "title": "Profile",
+    "personalInfo": "Personal Information",
+    "security": "Security",
+    "notifications": "Notifications",
+    "language": "Language",
+    "logout": "Logout"
+  },
+  "tabs": {
+    "home": "Home",
+    "booking": "Booking",
+    "event": "Event",
+    "bill": "Bill",
+    "pay": "Pay",
+    "profile": "Profile"
+  }
+}

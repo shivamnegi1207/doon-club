@@ -1,0 +1,83 @@
+{
+  "common": {
+    "email": "电子邮件",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "rememberMe": "记住我",
+    "forgotPassword": "忘记密码?",
+    "language": "语言",
+    "back": "返回",
+    "save": "保存",
+    "cancel": "取消",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "logout": "登出"
+  },
+  "login": {
+    "title": "欢迎回来",
+    "subtitle": "欢迎回来！请输入您的详细信息。",
+    "membershipId": "会员编号",
+    "membershipPlaceholder": "MEM12345",
+    "password": "您的密码",
+    "loginButton": "登录",
+    "loggingIn": "正在登录...",
+    "invalidCredentials": "无效的会员编号或密码",
+    "networkError": "网络错误。请重试。",
+    "enterDetails": "请输入会员编号和密码",
+    "loginFailed": "登录失败。请重试。"
+  },
+  "forgotPassword": {
+    "title": "忘记密码",
+    "subtitle": "输入您的会员编号和出生日期以验证您的身份",
+    "membershipId": "会员编号",
+    "membershipPlaceholder": "MEM12345",
+    "dateOfBirth": "出生日期",
+    "dobPlaceholder": "YYYY-MM-DD",
+    "dobFormat": "格式：YYYY-MM-DD（例如，1980-05-01）",
+    "verifyButton": "验证",
+    "verifying": "正在验证...",
+    "invalidFormat": "请以 YYYY-MM-DD 格式输入出生日期",
+    "enterDetails": "请输入会员编号和出生日期",
+    "verificationFailed": "验证失败。请重试。",
+    "invalidDOB": "无效的会员编号或出生日期",
+    "backToLogin": "返回登录"
+  },
+  "resetPassword": {
+    "title": "重置密码",
+    "subtitle": "请在下方输入您的新密码",
+    "newPassword": "新密码",
+    "newPasswordPlaceholder": "输入新密码",
+    "confirmPassword": "确认密码",
+    "confirmPasswordPlaceholder": "确认新密码",
+    "resetButton": "重置密码",
+    "resetting": "正在重置...",
+    "passwordMismatch": "密码不匹配",
+    "passwordTooShort": "密码必须至少 4 个字符",
+    "enterBothFields": "请输入两个密码字段",
+    "invalidUserId": "无效的用户编号。请重试。",
+    "resetFailed": "重置密码失败。请重试。",
+    "footerText": "密码必须至少 4 个字符"
+  },
+  "language": {
+    "title": "语言",
+    "suggested": "建议的语言",
+    "other": "其他语言"
+  },
+  "profile": {
+    "title": "个人资料",
+    "personalInfo": "个人信息",
+    "security": "安全",
+    "notifications": "通知",
+    "language": "语言",
+    "logout": "登出"
+  },
+  "tabs": {
+    "home": "首页",
+    "booking": "预订",
+    "event": "活动",
+    "bill": "账单",
+    "pay": "支付",
+    "profile": "个人资料"
+  }
+}
