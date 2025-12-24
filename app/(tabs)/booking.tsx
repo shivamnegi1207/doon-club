@@ -6,46 +6,90 @@ import {
   ScrollView,
   Image,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import { ArrowLeft, MoreVertical, Users, Star, Plus, Minus, Calendar } from 'lucide-react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'expo-router';
+
+interface Amenity {
+  id: number;
+  name: string;
+  icon: string;
+  description: string | null;
+  status: number;
+}
+
+interface Room {
+  id: number;
+  name: string;
+  featured_image: string;
+  member_price: string;
+  guest_price: string;
+  no_of_guest_allowed: string;
+  amenities: Amenity[];
+  bed: string;
+  room_type: string;
+  check_in_time: string;
+  check_out_time: string;
+}
 
 export default function BookingScreen() {
   const router = useRouter();
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [rooms, setRooms] = useState(1);
+  const [roomCount, setRoomCount] = useState(1);
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [bookings, setBookings] = useState<Room[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const bookings = [
-    {
-      id: 1,
-      title: 'Three Bedded Room',
-      rating: 4.5,
-      price: '₹2,200',
-      guests: '2 Guests (1 Room)',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-    {
-      id: 2,
-      title: 'Three Bedded Room',
-      rating: 4.5,
-      price: '₹2,200',
-      guests: '2 Guests (1 Room)',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-    {
-      id: 3,
-      title: 'Three Bedded Room',
-      rating: 4.5,
-      price: '₹2,200',
-      guests: '2 Guests (1 Room)',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-  ];
+  useEffect(() => {
+    fetchRooms();
+  }, []);
+
+  const fetchRooms = async () => {
+    try {
+      setLoading(true);
+      setError('');
+      const response = await fetch('https://doonclub.in/api/get-all-rooms');
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.rooms && Array.isArray(result.rooms)) {
+          setBookings(result.rooms);
+        } else {
+          setError('Failed to load rooms');
+        }
+      } else {
+        setError('Failed to fetch rooms');
+      }
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getImageUrl = (imagePath: string) => {
+    return `https://doonclub.in/storage/${imagePath.replace('public/', '')}`;
+  };
+
+  const getAmenityIcon = (amenityName: string) => {
+    const iconMap: { [key: string]: string } = {
+      WIFI: '📶',
+      TV: '📺',
+      Parking: '🅿️',
+      Dryer: '��️',
+      'Air conditioner': '❄️',
+      shampoo: '🧴',
+      Conditioner: '✨',
+      'Room Service': '🔔',
+    };
+    return iconMap[amenityName] || '✓';
+  };
 
   return (
     <View style={styles.container}>
@@ -108,13 +152,13 @@ export default function BookingScreen() {
             <Text style={styles.counterLabel}>Rooms</Text>
             <View style={styles.counterControl}>
               <TouchableOpacity
-                onPress={() => setRooms(Math.max(1, rooms - 1))}
+                onPress={() => setRoomCount(Math.max(1, roomCount - 1))}
                 style={styles.counterButton}>
                 <Minus size={18} color="#0f4c8b" />
               </TouchableOpacity>
-              <Text style={styles.counterValue}>{rooms}</Text>
+              <Text style={styles.counterValue}>{roomCount}</Text>
               <TouchableOpacity
-                onPress={() => setRooms(rooms + 1)}
+                onPress={() => setRoomCount(roomCount + 1)}
                 style={styles.counterButton}>
                 <Plus size={18} color="#0f4c8b" />
               </TouchableOpacity>
@@ -124,7 +168,7 @@ export default function BookingScreen() {
 
         <View style={styles.guestRow}>
           <Text style={styles.guestText}>
-            {adults + children} Guest · {adults} Adult · {children} Children
+            {adults + children} Guest · {adults} Adult · {children} Children · {roomCount} Room{roomCount !== 1 ? 's' : ''}
           </Text>
         </View>
 
@@ -182,41 +226,55 @@ export default function BookingScreen() {
         </View>
       </Modal>
 
-      <ScrollView style={styles.bookingsList} showsVerticalScrollIndicator={false}>
-        {bookings.map((booking) => (
-          <TouchableOpacity
-            key={booking.id}
-            style={styles.bookingCard}
-            onPress={() => router.push('/booking-detail')}>
-            <Image
-              source={{ uri: booking.image }}
-              style={styles.bookingImage}
-            />
-            <View style={styles.bookingInfo}>
-              <View style={styles.titleRow}>
-                <Text style={styles.bookingTitle}>{booking.title}</Text>
-                <View style={styles.ratingBadge}>
-                  <Star size={14} color="#f59e0b" fill="#f59e0b" />
-                  <Text style={styles.rating}>{booking.rating}</Text>
+      {loading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#0f4c8b" />
+          <Text style={styles.loadingText}>Loading rooms...</Text>
+        </View>
+      ) : error ? (
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>{error}</Text>
+          <TouchableOpacity style={styles.retryButton} onPress={fetchRooms}>
+            <Text style={styles.retryButtonText}>Retry</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <ScrollView style={styles.bookingsList} showsVerticalScrollIndicator={false}>
+          {bookings.map((booking) => (
+            <TouchableOpacity
+              key={booking.id}
+              style={styles.bookingCard}
+              onPress={() => router.push('/booking-detail')}>
+              <Image
+                source={{ uri: getImageUrl(booking.featured_image) }}
+                style={styles.bookingImage}
+              />
+              <View style={styles.bookingInfo}>
+                <View style={styles.titleRow}>
+                  <Text style={styles.bookingTitle}>{booking.name}</Text>
+                  <View style={styles.ratingBadge}>
+                    <Star size={14} color="#f59e0b" fill="#f59e0b" />
+                    <Text style={styles.rating}>4.5</Text>
+                  </View>
+                </View>
+                <Text style={styles.price}>₹{booking.member_price}/Per night</Text>
+                <View style={styles.guestInfo}>
+                  <Users size={16} color="#6b7280" />
+                  <Text style={styles.guestType}>Guests</Text>
+                  <Text style={styles.guestCount}>{booking.no_of_guest_allowed}</Text>
+                </View>
+                <View style={styles.amenities}>
+                  {booking.amenities.slice(0, 5).map((amenity) => (
+                    <Text key={amenity.id} style={styles.amenityIcon}>
+                      {getAmenityIcon(amenity.name)}
+                    </Text>
+                  ))}
                 </View>
               </View>
-              <Text style={styles.price}>{booking.price}/Per night</Text>
-              <View style={styles.guestInfo}>
-                <Users size={16} color="#6b7280" />
-                <Text style={styles.guestType}>Guest</Text>
-                <Text style={styles.guestCount}>{booking.guests}</Text>
-              </View>
-              <View style={styles.amenities}>
-                <Text style={styles.amenityIcon}>🛏️</Text>
-                <Text style={styles.amenityIcon}>📺</Text>
-                <Text style={styles.amenityIcon}>🚿</Text>
-                <Text style={styles.amenityIcon}>🔑</Text>
-                <Text style={styles.amenityIcon}>✓</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      )}
     </View>
   );
 }
@@ -446,5 +504,40 @@ const styles = StyleSheet.create({
   },
   amenityIcon: {
     fontSize: 14,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 14,
+    color: '#6b7280',
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 40,
+    paddingHorizontal: 16,
+  },
+  errorText: {
+    fontSize: 14,
+    color: '#ef4444',
+    textAlign: 'center',
+    marginBottom: 16,
+  },
+  retryButton: {
+    backgroundColor: '#0f4c8b',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  retryButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
